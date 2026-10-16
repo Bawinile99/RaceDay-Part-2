@@ -1,0 +1,21 @@
+## .NET
+bin/
+obj/
+*.user
+*.suo
+
+## SQLite databases
+*.db
+*.db-shm
+*.db-wal
+
+## Rider / VS
+.idea/
+.vs/
+
+## Logs
+*.log
+
+## OS
+.DS_Store
+Thumbs.db
