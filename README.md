@@ -2,7 +2,7 @@
 
 A full-stack event management system for the South African road running, walking, and cycling community. 🇿🇦
 
-**Repository:** https://github.com/Bawinile99/RaceDay
+**Repository:** [https://github.com/Bawinile99/RaceDay](https://github.com/Bawinile99/RaceDay-Part-2)
 
 **Module:** PROG6212 — Programming 2B
 
