@@ -213,8 +213,10 @@ Live status: 👉 https://github.com/Bawinile99/RaceDay/actions
 
 ## 📸 Screenshots
 
-### 🖥️ Solution in Visual Studio / VS Code
-<img width="1885" height="899" alt="Solution screenshot" src="https://github.com/user-attachments/assets/5abcb6a1-494d-49f3-9680-3d3906662a51" />
+<img width="993" height="474" alt="h" src="https://github.com/user-attachments/assets/ca1d689a-a157-42b9-9d50-79559e808771" />
+<img width="853" height="512" alt="test" src="https://github.com/user-attachments/assets/33b2aa62-2e3a-479c-ac3e-032f0c13c2c7" />
+<img width="835" height="700" alt="ui" src="https://github.com/user-attachments/assets/b1a9773b-d701-45da-82e6-b5c66cb0609a" />
+
 
 ### 📘 Swagger UI — All Endpoints
 <img width="995" height="1025" alt="Swagger screenshot" src="https://github.com/user-attachments/assets/7db4d0fa-378a-4d8b-8319-4ef9e6b89d05" />
