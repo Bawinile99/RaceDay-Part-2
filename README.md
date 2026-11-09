@@ -14,6 +14,7 @@
 | **Institution** | The Independent Institute of Education (IIE) |
 | **Author** | Bawinile Mahlangu |
 | **Repository** | [github.com/Bawinile99/RaceDay-Part-2](https://github.com/Bawinile99/RaceDay-Part-2) |
+| **Video Presentation** | **[ADD YOUR YOUTUBE LINK HERE]** (unlisted) |
 
 ---
 
@@ -408,9 +409,10 @@ The walkthrough covers:
 
 ## 13. AI Usage Disclosure
 
-In accordance with the IIE Assessment Strategy, the following AI tool was used during this project:
+In accordance with the IIE Assessment Strategy, the following AI tools were used during this project:
 
-- **Claude (Anthropic)** — code review, debugging assistance, architecture discussion and documentation drafting.
+- **Claude (Anthropic)** — debugging assistance, understanding concepts, code review, architecture discussion and documentation drafting.
+- **DeepSeek** — debugging assistance and understanding concepts.
 
 All code was reviewed, understood and validated by the student. Architectural decisions, business logic and testing strategy reflect the student's own synthesis and analysis.
 
