@@ -1,0 +1,60 @@
+@model List<RaceDay.MVC.ViewModels.EnrolmentVm>
+@{
+    ViewData["Title"] = "Enrolments";
+    int? eventId = ViewData["EventId"] as int?;
+}
+
+<div class="container mt-4">
+    <h2>Enrolments</h2>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success">@TempData["Success"]</div>
+    }
+
+    @if (Model.Count == 0)
+    {
+        <div class="alert alert-info">No enrolments yet.</div>
+    }
+    else
+    {
+        <div class="table-responsive">
+            <table class="table table-hover align-middle">
+                <thead class="table-light">
+                    <tr>
+                        <th>Participant</th>
+                        <th>Event</th>
+                        <th>Category</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                @foreach (var e in Model)
+                {
+                    <tr>
+                        <td>@e.ParticipantName</td>
+                        <td>@e.EventName</td>
+                        <td>@e.CategoryName</td>
+                        <td>@e.EnrolmentDate.ToString("dd MMM yyyy")</td>
+                        <td>
+                            @switch (e.Status)
+                            {
+                                case "Confirmed":
+                                    <span class="badge bg-success">Confirmed</span>
+                                    break;
+                                case "Pending":
+                                    <span class="badge bg-warning text-dark">Pending</span>
+                                    break;
+                                default:
+                                    <span class="badge bg-secondary">@e.Status</span>
+                                    break;
+                            }
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    }
+</div>

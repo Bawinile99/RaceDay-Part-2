@@ -1,0 +1,58 @@
+﻿@model List<RaceDay.MVC.ViewModels.EventVm>
+@{
+    ViewData["Title"] = "RaceDay – Upcoming Events";
+}
+
+<section class="hero p-5 mb-4 rounded-3 text-white" style="background:linear-gradient(135deg,#0d6efd,#0dcaf0);">
+    <div class="container">
+        <h1 class="display-5 fw-bold">RaceDay</h1>
+        <p class="lead">South Africa's running, walking and cycling event platform.</p>
+        @if (Context.Session.GetString("Role") == null)
+        {
+            <a asp-controller="Account" asp-action="Register" class="btn btn-light btn-lg me-2">Join now</a>
+            <a asp-controller="Account" asp-action="Login" class="btn btn-outline-light btn-lg">Log in</a>
+        }
+    </div>
+</section>
+
+<div class="container">
+    <h2 class="mb-3">Upcoming Events</h2>
+    @if (Model.Count == 0)
+    {
+        <div class="alert alert-info">No events yet. Check back soon.</div>
+    }
+    else
+    {
+        <div class="row g-3">
+            @foreach (var ev in Model)
+            {
+                <div class="col-md-4">
+                    <div class="card h-100 shadow-sm">
+                        @if (!string.IsNullOrWhiteSpace(ev.BannerImageUrl))
+                        {
+                            <img src="@ev.BannerImageUrl" class="card-img-top" alt="@ev.Name" style="height:180px;object-fit:cover;" />
+                        }
+                        else
+                        {
+                            <div class="card-img-top bg-secondary d-flex align-items-center justify-content-center text-white" style="height:180px;">
+                                <span>@ev.EventType</span>
+                            </div>
+                        }
+                        <div class="card-body">
+                            <span class="badge bg-primary mb-2">@ev.EventType</span>
+                            <h5 class="card-title">@ev.Name</h5>
+                            <p class="card-text text-muted small mb-1">
+                                <strong>@ev.EventDate.ToString("ddd, dd MMM yyyy")</strong><br />
+                                @ev.Location · @ev.Distance km
+                            </p>
+                        </div>
+                        <div class="card-footer bg-white d-flex justify-content-between align-items-center">
+                            <small class="text-muted">@ev.EnrolmentCount enrolled</small>
+                            <a asp-controller="Events" asp-action="Details" asp-route-id="@ev.EventId" class="btn btn-sm btn-outline-primary">View details</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>

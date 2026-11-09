@@ -1,0 +1,87 @@
+﻿@model RaceDay.MVC.ViewModels.EventVm
+@{
+    ViewData["Title"] = Model.Name;
+    var categories = ViewData["Categories"] as List<RaceDay.MVC.ViewModels.CategoryVm> ?? new();
+    var role = ViewData["Role"] as string;
+}
+
+<div class="container mt-4">
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger">@TempData["Error"]</div>
+    }
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success">@TempData["Success"]</div>
+    }
+
+    @if (!string.IsNullOrWhiteSpace(Model.BannerImageUrl))
+    {
+        <img src="@Model.BannerImageUrl" class="img-fluid rounded mb-3" style="max-height:340px;width:100%;object-fit:cover;" alt="@Model.Name" />
+    }
+
+    <div class="row">
+        <div class="col-md-8">
+            <h1 class="mb-2">@Model.Name</h1>
+            <p class="text-muted mb-3">
+                <span class="badge bg-primary">@Model.EventType</span>
+                <span class="ms-2">@Model.EventDate.ToString("dddd, dd MMM yyyy")</span>
+            </p>
+            <p><strong>Location:</strong> @Model.Location</p>
+            <p><strong>Distance:</strong> @Model.Distance km</p>
+            <p><strong>Organiser:</strong> @Model.OrganiserName</p>
+            <hr />
+            <h5>About this event</h5>
+            <p>@Model.Description</p>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <h5 class="card-title">Enrol</h5>
+
+                    @if (categories.Count == 0)
+                    {
+                        <div class="alert alert-warning small mb-0">
+                            No categories have been added yet. Contact the organiser.
+                        </div>
+                    }
+                    else if (role == null)
+                    {
+                        <p class="small text-muted">Log in as a Participant to enrol.</p>
+                        <a asp-controller="Account" asp-action="Login" class="btn btn-primary w-100">Log in</a>
+                    }
+                    else if (role == "Organiser")
+                    {
+                        <p class="small text-muted mb-0">Organisers cannot enrol in events.</p>
+                    }
+                    else
+                    {
+                        <form asp-controller="Enrolments" asp-action="Enrol" method="post">
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" name="eventId" value="@Model.EventId" />
+                            <div class="mb-3">
+                                <label class="form-label">Select a category</label>
+                                <select name="categoryId" class="form-select" required>
+                                    @foreach (var c in categories)
+                                    {
+                                        var ageRange = c.MinAge.HasValue || c.MaxAge.HasValue
+                                            ? $" ({(c.MinAge?.ToString() ?? "any")}–{(c.MaxAge?.ToString() ?? "any")})"
+                                            : "";
+                                        <option value="@c.CategoryId">@c.Name@ageRange</option>
+                                    }
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-success w-100">Enrol now</button>
+                        </form>
+                    }
+                </div>
+                <div class="card-footer bg-white small text-muted">
+                    @Model.EnrolmentCount already enrolled
+                </div>
+            </div>
+
+            <a asp-controller="Home" asp-action="Index" class="btn btn-outline-secondary w-100 mt-3">← Back to events</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,45 @@
+﻿@model List<RaceDay.MVC.ViewModels.ResultVm>
+@{
+    ViewData["Title"] = "My Results";
+}
+
+<div class="container mt-4">
+    <h2>My Results</h2>
+
+    @if (Model.Count == 0)
+    {
+        <div class="alert alert-info">
+            No race results yet. Enrol in events and check back after they finish.
+            <a asp-controller="Home" asp-action="Index">Browse events</a>
+        </div>
+    }
+    else
+    {
+        <div class="row g-3">
+            @foreach (var r in Model)
+            {
+                <div class="col-md-6">
+                    <div class="card shadow-sm h-100">
+                        <div class="card-body">
+                            <h5 class="card-title mb-1">@r.EventName</h5>
+                            <div class="text-muted small mb-3">@r.CategoryName</div>
+                            <div class="row text-center">
+                                <div class="col-6">
+                                    <div class="small text-uppercase text-muted">Finish time</div>
+                                    <div class="fs-4 fw-bold">@r.FinishTimeDisplay</div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="small text-uppercase text-muted">Position</div>
+                                    <div class="fs-4 fw-bold">#@r.FinishingPosition</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer bg-white small text-muted">
+                            Captured @r.CapturedDate.ToString("dd MMM yyyy")
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>

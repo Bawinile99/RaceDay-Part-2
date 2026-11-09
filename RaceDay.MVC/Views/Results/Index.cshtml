@@ -1,0 +1,97 @@
+﻿@model List<RaceDay.MVC.ViewModels.ResultVm>
+@{
+    ViewData["Title"] = "Results";
+    var eligible = ViewData["EligibleEnrolments"] as List<RaceDay.MVC.ViewModels.EnrolmentVm> ?? new();
+}
+
+<div class="container mt-4">
+    <h2>Results</h2>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success">@TempData["Success"]</div>
+    }
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger">@TempData["Error"]</div>
+    }
+
+    @if (eligible.Count > 0)
+    {
+        <div class="card shadow-sm mb-4">
+            <div class="card-body">
+                <h5 class="card-title">Capture a new result</h5>
+                <form asp-action="Create" method="post" class="row g-2 align-items-end">
+                    @Html.AntiForgeryToken()
+                    <div class="col-md-4">
+                        <label class="form-label">Enrolment</label>
+                        <select name="enrolmentId" class="form-select" required>
+                            <option value="">— Select participant / event —</option>
+                            @foreach (var e in eligible)
+                            {
+                                <option value="@e.EnrolmentId">@e.ParticipantName — @e.EventName (@e.CategoryName)</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">Finish time (hh:mm:ss)</label>
+                        <div class="d-flex gap-1">
+                            <input type="number" name="hours" class="form-control" min="0" max="23" value="0" placeholder="hh" style="width:70px;" />
+                            <span class="align-self-center">:</span>
+                            <input type="number" name="minutes" class="form-control" min="0" max="59" value="0" placeholder="mm" style="width:70px;" />
+                            <span class="align-self-center">:</span>
+                            <input type="number" name="seconds" class="form-control" min="0" max="59" value="0" placeholder="ss" style="width:70px;" />
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <label class="form-label">Position</label>
+                        <input type="number" name="finishingPosition" class="form-control" min="1" required placeholder="e.g. 47" />
+                    </div>
+                    <div class="col-md-3">
+                        <button type="submit" class="btn btn-primary w-100">Save result</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-info">No eligible enrolments to capture. Enrolments may already have results.</div>
+    }
+
+    <h4 class="mt-4">Captured results</h4>
+    @if (Model.Count == 0)
+    {
+        <div class="alert alert-secondary">No results captured yet.</div>
+    }
+    else
+    {
+        <div class="table-responsive">
+            <table class="table table-hover align-middle">
+                <thead class="table-light">
+                    <tr>
+                        <th>Participant</th>
+                        <th>Event</th>
+                        <th>Category</th>
+                        <th>Finish time</th>
+                        <th>Position</th>
+                        <th>Captured</th>
+                    </tr>
+                </thead>
+                <tbody>
+                @foreach (var r in Model)
+                {
+                    <tr>
+                        <td>@r.ParticipantName</td>
+                        <td>@r.EventName</td>
+                        <td>@r.CategoryName</td>
+                        <td><code>@r.FinishTimeDisplay</code></td>
+                        <td>@r.FinishingPosition</td>
+                        <td>@r.CapturedDate.ToString("dd MMM yyyy HH:mm")</td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+    }
+</div>
