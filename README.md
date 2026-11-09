@@ -263,6 +263,19 @@ The repository includes a GitHub Actions workflow at `.github/workflows/ci.yml`,
 <img width="1191" height="785" alt="Tests passing in CLI" src="https://github.com/user-attachments/assets/a4cb6285-5ebe-498e-ae4f-0f9a84110d8c" />
 
 ---
+<img width="867" height="518" alt="Screenshot 2026-11-09 213815" src="https://github.com/user-attachments/assets/d66dcad1-2f8a-4f73-9447-6e297e1d4232" />
+<img width="1230" height="446" alt="Screenshot 2026-11-09 213802" src="https://github.com/user-attachments/assets/a2ee7fbd-5879-412b-b6ad-3bd1b2093b8b" />
+<img width="1436" height="688" alt="Screenshot 2026-11-09 222640" src="https://github.com/user-attachments/assets/951ee1c7-4432-4bca-82fb-a24eefbebdc0" />
+<img width="1383" height="633" alt="Screenshot 2026-11-09 222630" src="https://github.com/user-attachments/assets/12a762cd-1765-458c-922c-723421f454b0" />
+<img width="1373" height="545" alt="Screenshot 2026-11-09 222621" src="https://github.com/user-attachments/assets/112d38cc-43cb-48bb-8c9a-4ad6d8fe8085" />
+<img width="1508" height="802" alt="Screenshot 2026-11-09 222613" src="https://github.com/user-attachments/assets/130a6c5f-ae5b-418e-a29a-f4419615656d" />
+<img width="1424" height="609" alt="Screenshot 2026-11-09 222553" src="https://github.com/user-attachments/assets/7e668f53-ea3a-4eab-8004-de09b46a1797" />
+<img width="1443" height="911" alt="Screenshot 2026-11-09 222424" src="https://github.com/user-attachments/assets/6fcf2620-947a-4bb5-bb9a-10ad22284665" />
+<img width="1501" height="487" alt="Screenshot 2026-11-09 222412" src="https://github.com/user-attachments/assets/e7860ec9-ddf3-4f46-a762-92df7cbc3412" />
+<img width="1484" height="548" alt="Screenshot 2026-11-09 214137" src="https://github.com/user-attachments/assets/38b3ee87-0863-4e34-82f6-a50504eb8577" />
+<img width="1187" height="902" alt="Screenshot 2026-11-09 214128" src="https://github.com/user-attachments/assets/dc1db339-7219-4b9b-86ae-3959dc4cd16f" />
+<img width="1246" height="636" alt="Screenshot 2026-11-09 213828" src="https://github.com/user-attachments/assets/20c90328-1747-4f35-a596-e810ed753036" />
+
 
 ## 🎥 Video Presentation
 
